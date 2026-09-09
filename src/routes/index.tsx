@@ -42,7 +42,7 @@ function Index() {
           className="text-3xl tracking-tight text-foreground"
           style={{ fontFamily: "'Instrument Serif', serif" }}
         >
-          Peak Academy<sup className="text-xs">®</sup>
+          Peak Academia<sup className="text-xs">®</sup>
         </div>
 
         <div className="hidden items-center gap-8 md:flex">
