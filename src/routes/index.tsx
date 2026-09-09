@@ -4,22 +4,20 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      {
-        title: "Peak Academy — Where dreams rise through the silence",
-      },
+      { title: "Peak Academy — The mind is made by what it feeds upon" },
       {
         name: "description",
         content:
-          "We're designing tools for deep thinkers, bold creators, and quiet rebels.",
+          "Peak Academy builds the architecture that keeps your mind clear and your output deliberate.",
       },
       {
         property: "og:title",
-        content: "Peak Academy — Where dreams rise through the silence",
+        content: "Peak Academy — The mind is made by what it feeds upon",
       },
       {
         property: "og:description",
         content:
-          "We're designing tools for deep thinkers, bold creators, and quiet rebels.",
+          "Peak Academy builds the architecture that keeps your mind clear and your output deliberate.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
