@@ -1,24 +1,112 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      {
+        title: "Velorah — Where dreams rise through the silence",
+      },
+      {
+        name: "description",
+        content:
+          "We're designing tools for deep thinkers, bold creators, and quiet rebels.",
+      },
+      {
+        property: "og:title",
+        content: "Velorah — Where dreams rise through the silence",
+      },
+      {
+        property: "og:description",
+        content:
+          "We're designing tools for deep thinkers, bold creators, and quiet rebels.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 h-full w-full object-cover"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
       />
+
+      <nav className="relative z-10 mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-6">
+        <div
+          className="text-3xl tracking-tight text-foreground"
+          style={{ fontFamily: "'Instrument Serif', serif" }}
+        >
+          Velorah<sup className="text-xs">®</sup>
+        </div>
+
+        <div className="hidden items-center gap-8 md:flex">
+          <a
+            href="#"
+            className="text-sm text-foreground transition-colors"
+          >
+            Home
+          </a>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Studio
+          </a>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            About
+          </a>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Journal
+          </a>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Reach Us
+          </a>
+        </div>
+
+        <button className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground transition-transform hover:scale-[1.03]">
+          Begin Journey
+        </button>
+      </nav>
+
+      <section className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-[90px] pb-40 pt-32 text-center">
+        <h1
+          className="animate-fade-rise max-w-7xl text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-foreground sm:text-7xl md:text-8xl"
+          style={{ fontFamily: "'Instrument Serif', serif" }}
+        >
+          Where{" "}
+          <em className="not-italic text-muted-foreground">dreams</em> rise{" "}
+          <em className="not-italic text-muted-foreground">
+            through the silence.
+          </em>
+        </h1>
+
+        <p className="animate-fade-rise-delay mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          We're designing tools for deep thinkers, bold creators, and quiet
+          rebels. Amid the chaos, we build digital spaces for sharp focus and
+          inspired work.
+        </p>
+
+        <button className="animate-fade-rise-delay-2 liquid-glass mt-12 cursor-pointer rounded-full px-14 py-5 text-base text-foreground transition-transform hover:scale-[1.03]">
+          Begin Journey
+        </button>
+      </section>
     </div>
   );
 }
