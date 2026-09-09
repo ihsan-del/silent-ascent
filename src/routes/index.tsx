@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Velorah — Where dreams rise through the silence",
+        title: "Peak Academy — Where dreams rise through the silence",
       },
       {
         name: "description",
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Velorah — Where dreams rise through the silence",
+        content: "Peak Academy — Where dreams rise through the silence",
       },
       {
         property: "og:description",
@@ -44,7 +44,7 @@ function Index() {
           className="text-3xl tracking-tight text-foreground"
           style={{ fontFamily: "'Instrument Serif', serif" }}
         >
-          Velorah<sup className="text-xs">®</sup>
+          Peak Academy<sup className="text-xs">®</sup>
         </div>
 
         <div className="hidden items-center gap-8 md:flex">

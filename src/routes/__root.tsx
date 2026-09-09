@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Velorah" },
+      { title: "Peak Academy" },
       { name: "description", content: "Where dreams rise through the silence." },
-      { name: "author", content: "Velorah" },
-      { property: "og:title", content: "Velorah" },
+      { name: "author", content: "Peak Academy" },
+      { property: "og:title", content: "Peak Academy" },
       { property: "og:description", content: "Where dreams rise through the silence." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@velorah" },
+      { name: "twitter:site", content: "@peakacademy" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
