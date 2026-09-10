@@ -33,7 +33,7 @@ function Index() {
         loop
         muted
         playsInline
-        className="absolute inset-0 z-0 h-full w-full object-cover"
+        className="absolute inset-x-0 top-0 z-0 h-screen w-full object-cover"
         src="/media/peak-academia-garden.webm"
       />
 
@@ -190,10 +190,6 @@ function Index() {
                 Got questions about admissions, syllabus, or timing? We're here
                 to help — reach out and let's get you started.
               </p>
-              <p className="mt-10 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                We usually respond within a few hours during our active hours —
-                don't hesitate to message us with any questions before enrolling.
-              </p>
             </div>
 
             <address className="grid gap-8 not-italic sm:grid-cols-2 md:grid-cols-1">
@@ -235,6 +231,11 @@ function Index() {
               </div>
             </address>
           </div>
+
+          <p className="mt-14 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            We usually respond within a few hours during our active hours — don't
+            hesitate to message us with any questions before enrolling.
+          </p>
         </div>
       </section>
     </div>
