@@ -34,7 +34,7 @@ function Index() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src="/media/peak-academia-garden.mp4"
+        src="/media/peak-academia-garden.webm"
       />
 
       <nav className="relative z-10 mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-6">
