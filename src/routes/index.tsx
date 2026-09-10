@@ -34,7 +34,7 @@ function Index() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+        src="/media/peak-academia-garden.webm"
       />
 
       <nav className="relative z-10 mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-6">
@@ -71,7 +71,7 @@ function Index() {
             Journal
           </a>
           <a
-            href="#"
+            href="#reach-us"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Reach Us
@@ -170,6 +170,71 @@ function Index() {
             and someone who remembers exactly how it feels to be on the other
             side of it.
           </p>
+        </div>
+      </section>
+
+      <section
+        id="reach-us"
+        className="relative z-10 border-t border-border bg-background px-6 py-24 sm:py-32"
+      >
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-14 md:grid-cols-[1.15fr_1fr] md:gap-24">
+            <div>
+              <h2
+                className="text-5xl font-normal leading-none text-foreground sm:text-6xl"
+                style={{ fontFamily: "'Instrument Serif', serif" }}
+              >
+                Reach Us
+              </h2>
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Got questions about admissions, syllabus, or timing? We're here
+                to help — reach out and let's get you started.
+              </p>
+              <p className="mt-10 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                We usually respond within a few hours during our active hours —
+                don't hesitate to message us with any questions before enrolling.
+              </p>
+            </div>
+
+            <address className="grid gap-8 not-italic sm:grid-cols-2 md:grid-cols-1">
+              <div>
+                <h3 className="text-sm font-medium text-muted-foreground">Email</h3>
+                <a
+                  href="mailto:peak.academia11@gmail.com"
+                  className="story-link mt-2 text-base text-foreground"
+                >
+                  peak.academia11@gmail.com
+                </a>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Call / WhatsApp
+                </h3>
+                <p className="mt-2 flex flex-wrap items-center gap-x-2 text-base text-foreground">
+                  <a className="story-link" href="tel:+923322929108">
+                    03322929108
+                  </a>
+                  <span aria-hidden="true" className="text-muted-foreground">·</span>
+                  <a className="story-link" href="tel:+923332946269">
+                    03332946269
+                  </a>
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium text-muted-foreground">Follow Us</h3>
+                <p className="mt-2 text-base text-foreground">
+                  Instagram &amp; Facebook: @PeakAcademia
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium text-muted-foreground">Availability</h3>
+                <p className="mt-2 text-base text-foreground">2:00 PM – 9:00 PM, daily</p>
+              </div>
+            </address>
+          </div>
         </div>
       </section>
     </div>
