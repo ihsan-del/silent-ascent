@@ -70,7 +70,8 @@ function AuthPage() {
         });
         if (signUpError) throw signUpError;
         if (data.session) {
-          navigate({ to: search.next || "/" });
+          await ensureProfileFn();
+          navigate({ to: search.next || "/dashboard" });
         } else {
           setMessage("Check your email to confirm your account.");
         }
@@ -80,7 +81,8 @@ function AuthPage() {
           password,
         });
         if (signInError) throw signInError;
-        navigate({ to: search.next || "/" });
+        await ensureProfileFn();
+        navigate({ to: search.next || "/dashboard" });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
