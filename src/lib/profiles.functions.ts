@@ -17,8 +17,8 @@ export const ensureProfile = createServerFn({ method: "POST" })
     }
 
     const fullName =
-      context.claims?.user_metadata?.full_name ||
-      context.claims?.user_metadata?.name ||
+      (context.claims?.user_metadata?.["full_name"] as string | undefined) ||
+      (context.claims?.user_metadata?.["name"] as string | undefined) ||
       "";
 
     const { data: inserted, error } = await supabase
