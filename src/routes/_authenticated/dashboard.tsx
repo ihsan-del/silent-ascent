@@ -19,7 +19,7 @@ function Dashboard() {
   const ensureProfileFn = useServerFn(ensureProfile);
 
   useEffect(() => {
-    ensureProfileFn({ data: {} }).catch(console.error);
+    ensureProfileFn().catch(console.error);
   }, [ensureProfileFn]);
 
   const handleSignOut = async () => {
