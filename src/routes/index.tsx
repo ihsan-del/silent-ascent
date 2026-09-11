@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -78,9 +78,12 @@ function Index() {
           </a>
         </div>
 
-        <button className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground transition-transform hover:scale-[1.03]">
+        <Link
+          to="/auth"
+          className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground transition-transform hover:scale-[1.03]"
+        >
           Begin Journey
-        </button>
+        </Link>
       </nav>
 
       <section className="relative z-10 flex min-h-screen flex-1 flex-col items-center justify-center px-6 pb-40 pt-32 text-center">
@@ -96,9 +99,12 @@ function Index() {
           architecture that keeps your mind clear and your output deliberate."
         </p>
 
-        <button className="animate-fade-rise-delay-2 liquid-glass mt-12 cursor-pointer rounded-full px-14 py-5 text-base text-foreground transition-transform hover:scale-[1.03]">
+        <Link
+          to="/auth"
+          className="animate-fade-rise-delay-2 liquid-glass mt-12 inline-flex cursor-pointer rounded-full px-14 py-5 text-base text-foreground transition-transform hover:scale-[1.03]"
+        >
           Begin Journey
-        </button>
+        </Link>
       </section>
 
       <section
