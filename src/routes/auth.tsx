@@ -40,6 +40,7 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const ensureProfileFn = useServerFn(ensureProfile);
 
   useEffect(() => {
     const checkSession = async () => {
