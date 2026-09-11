@@ -99,9 +99,12 @@ function Index() {
           architecture that keeps your mind clear and your output deliberate."
         </p>
 
-        <button className="animate-fade-rise-delay-2 liquid-glass mt-12 cursor-pointer rounded-full px-14 py-5 text-base text-foreground transition-transform hover:scale-[1.03]">
+        <Link
+          to="/auth"
+          className="animate-fade-rise-delay-2 liquid-glass mt-12 inline-flex cursor-pointer rounded-full px-14 py-5 text-base text-foreground transition-transform hover:scale-[1.03]"
+        >
           Begin Journey
-        </button>
+        </Link>
       </section>
 
       <section
