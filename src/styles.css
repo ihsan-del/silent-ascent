@@ -136,6 +136,11 @@
   --sidebar-accent-foreground: hsl(0 0% 100%);
   --sidebar-border: hsl(0 0% 18%);
   --sidebar-ring: hsl(0 0% 100% / 30%);
+  --amber: hsl(43 96% 56%);
+  --amber-foreground: hsl(210 40% 10%);
+  --amber-glow: hsl(43 96% 56% / 40%);
+  --auth-panel: hsl(212 48% 10%);
+  --auth-card: hsl(212 38% 14%);
 }
 
 @layer base {
