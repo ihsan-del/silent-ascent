@@ -78,9 +78,12 @@ function Index() {
           </a>
         </div>
 
-        <button className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground transition-transform hover:scale-[1.03]">
+        <Link
+          to="/auth"
+          className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground transition-transform hover:scale-[1.03]"
+        >
           Begin Journey
-        </button>
+        </Link>
       </nav>
 
       <section className="relative z-10 flex min-h-screen flex-1 flex-col items-center justify-center px-6 pb-40 pt-32 text-center">
