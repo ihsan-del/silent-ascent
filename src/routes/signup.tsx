@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import { ensureProfile } from "@/lib/profiles.functions";
+import { getAuthRedirectUrl } from "@/lib/auth.functions";
 import { useServerFn } from "@tanstack/react-start";
 
 export const Route = createFileRoute("/signup")({
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/signup")({
 function SignupPage() {
   const navigate = useNavigate();
   const ensureProfileFn = useServerFn(ensureProfile);
+  const getRedirect = useServerFn(getAuthRedirectUrl);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,11 +46,14 @@ function SignupPage() {
     setError(null);
     setMessage(null);
     try {
-      const { lovable } = await import("@/integrations/lovable/index");
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+      const { redirectUrl } = await getRedirect();
+      const redirectTo =
+        redirectUrl ?? `${window.location.origin}/auth/callback`;
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
       });
-      if (result.error) throw result.error;
+      if (oauthError) throw oauthError;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Google sign-in failed.");
     }
@@ -66,11 +71,14 @@ function SignupPage() {
 
     setLoading(true);
     try {
+      const { redirectUrl } = await getRedirect();
+      const emailRedirectTo =
+        redirectUrl ?? `${window.location.origin}/auth/callback`;
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: email.trim(),
         password,
         options: {
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo,
           data: { full_name: fullName.trim() },
         },
       });

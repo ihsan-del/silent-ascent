@@ -5,9 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import { ensureProfile } from "@/lib/profiles.functions";
+import { getAuthRedirectUrl } from "@/lib/auth.functions";
 import { useServerFn } from "@tanstack/react-start";
 
-export const Route = createFileRoute("/auth")({
+export const Route = createFileRoute("/auth/")({
   component: AuthPage,
   head: () => ({
     meta: [
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const search = useSearch({ from: "/auth" }) as { next?: string };
+  const search = useSearch({ strict: false }) as { next?: string };
   const [mode, setMode] = useState<"signup" | "login">("signup");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,12 +42,14 @@ function AuthPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const ensureProfileFn = useServerFn(ensureProfile);
+  const getRedirect = useServerFn(getAuthRedirectUrl);
 
   useEffect(() => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession();
       if (data.session) {
-        navigate({ to: search.next || "/" });
+        if (search.next) window.location.assign(search.next);
+        else navigate({ to: "/" });
       }
     };
     checkSession();
@@ -60,18 +63,22 @@ function AuthPage() {
 
     try {
       if (mode === "signup") {
+        const { redirectUrl } = await getRedirect();
+        const emailRedirectTo =
+          redirectUrl ?? `${window.location.origin}/auth/callback`;
         const { data, error: signUpError } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: window.location.origin,
+            emailRedirectTo,
             data: { full_name: fullName },
           },
         });
         if (signUpError) throw signUpError;
         if (data.session) {
           await ensureProfileFn();
-          navigate({ to: search.next || "/dashboard" });
+          if (search.next) window.location.assign(search.next);
+          else navigate({ to: "/dashboard", search: { enrolled: false } });
         } else {
           setMessage("Check your email to confirm your account.");
         }
@@ -82,7 +89,8 @@ function AuthPage() {
         });
         if (signInError) throw signInError;
         await ensureProfileFn();
-        navigate({ to: search.next || "/dashboard" });
+        if (search.next) window.location.assign(search.next);
+        else navigate({ to: "/dashboard", search: { enrolled: false } });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
@@ -94,11 +102,14 @@ function AuthPage() {
   const handleGoogle = async () => {
     setError(null);
     try {
-      const { lovable } = await import("@/integrations/lovable/index");
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+      const { redirectUrl } = await getRedirect();
+      const redirectTo =
+        redirectUrl ?? `${window.location.origin}/auth/callback`;
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
       });
-      if (result.error) throw result.error;
+      if (oauthError) throw oauthError;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Google sign-in failed.");
     }
