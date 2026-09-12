@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      enrollments: {
+        Row: {
+          board: string
+          city: string
+          class_level: string
+          contact_number: string
+          created_at: string
+          email: string
+          full_name: string
+          guardian_name: string
+          id: string
+          institution: string
+          subjects: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          board: string
+          city: string
+          class_level: string
+          contact_number: string
+          created_at?: string
+          email: string
+          full_name: string
+          guardian_name: string
+          id?: string
+          institution: string
+          subjects?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          board?: string
+          city?: string
+          class_level?: string
+          contact_number?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          guardian_name?: string
+          id?: string
+          institution?: string
+          subjects?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
