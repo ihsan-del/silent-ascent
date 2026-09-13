@@ -20,10 +20,14 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
   }),
 });
 
+type DashboardSearch = {
+  enrolled?: boolean;
+};
+
 function Dashboard() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { enrolled } = useSearch({ from: "/_authenticated/dashboard" });
+  const { enrolled } = useSearch({ from: "/_authenticated/dashboard" }) as DashboardSearch;
   const ensureProfileFn = useServerFn(ensureProfile);
   const fetchEnrollment = useServerFn(getMyEnrollment);
 
