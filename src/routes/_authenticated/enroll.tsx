@@ -89,7 +89,7 @@ function EnrollPage() {
         },
       });
       await queryClient.invalidateQueries({ queryKey: ["enrollment"] });
-      navigate({ to: "/dashboard", search: { enrolled: true } });
+      navigate({ to: "/dashboard", search: { enrolled: true } as Record<string, unknown> });
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Could not save your enrollment.",
