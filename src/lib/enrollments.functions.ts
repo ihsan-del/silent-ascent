@@ -81,7 +81,7 @@ export const getMyEnrollment = createServerFn({ method: "GET" })
 
 export const submitEnrollment = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => enrollmentSchema.parse(input))
+  .validator((input: unknown) => enrollmentSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase.from("enrollments").insert({
       user_id: context.userId,

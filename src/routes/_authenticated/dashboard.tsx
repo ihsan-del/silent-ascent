@@ -1,17 +1,23 @@
 import { createFileRoute, Link, useRouter, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureProfile } from "@/lib/profiles.functions";
 import { getMyEnrollment } from "@/lib/enrollments.functions";
 import { useServerFn } from "@tanstack/react-start";
 import { Loader2 } from "lucide-react";
 
+const dashboardSearchSchema = z.object({
+  enrolled: z
+    .union([z.boolean(), z.string()])
+    .optional()
+    .transform((v) => v === true || v === "true"),
+});
+
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: Dashboard,
-  validateSearch: (search: Record<string, unknown>) => ({
-    enrolled: search['enrolled'] === true || search['enrolled'] === "true",
-  }),
+  validateSearch: dashboardSearchSchema,
   head: () => ({
     meta: [
       { title: "Peak Academia — Dashboard" },

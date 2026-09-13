@@ -52,9 +52,6 @@ function createSupabaseClient() {
       storage: brokeredPreviewStorage(),
       persistSession: true,
       autoRefreshToken: true,
-      // Required for the OAuth / email `?code=` callback flow handled at /auth/callback.
-      detectSessionInUrl: false,
-      flowType: 'pkce',
     },
   });
 }
