@@ -64,7 +64,7 @@ function SignupPage() {
 
       if (data.session) {
         await ensureProfileFn();
-        navigate({ to: "/dashboard" });
+        navigate({ to: "/dashboard", search: {} });
       } else {
         setMessage("Check your email to confirm your account, then log in.");
       }

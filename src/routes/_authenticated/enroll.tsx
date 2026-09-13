@@ -320,7 +320,7 @@ function EnrollPage() {
         <div className="mt-8 text-center">
           <Link
             to="/dashboard"
-            search={{}}
+            search={{ enrolled: undefined }}
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             ← Back to dashboard
