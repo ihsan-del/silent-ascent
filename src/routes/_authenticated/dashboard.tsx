@@ -27,7 +27,7 @@ type DashboardSearch = {
 function Dashboard() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { enrolled } = useSearch({ from: "/_authenticated/dashboard" }) as DashboardSearch;
+  const { enrolled } = useSearch({ from: "/_authenticated/dashboard" });
   const ensureProfileFn = useServerFn(ensureProfile);
   const fetchEnrollment = useServerFn(getMyEnrollment);
 
